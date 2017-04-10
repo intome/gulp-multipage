@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+body {
+  backgorund-color:#fff;
+  font-family:Arial,"microsoft yahei";
+  text-align:center;
+}
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.css3 {
+  $w: 500px;
+  width: $w;
+  height: $w;
+  margin:0 auto;
+  background:url(../img/css.jpg) center no-repeat;
+  background-size: cover;
+}
