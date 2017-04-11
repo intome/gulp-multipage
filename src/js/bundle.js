@@ -43,4 +43,11 @@ var hot = function hot(num) {
 };
 
 console.log(hot(5));
+"use strict";
+
+/**
+ * Created by Administrator on 2017/4/11.
+ */
+
+console.log(3);
 //# sourceMappingURL=bundle.js.map

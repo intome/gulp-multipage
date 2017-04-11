@@ -41,7 +41,6 @@ gulp.task('script', () => {
     presets: ['es2015']
   }))
   .pipe(concat('bundle.js'))
-  .pipe(rename({suffix: '.min'}))
   .pipe(uglify())
   .pipe(rev())
   .pipe(gulp.dest(config.dest))

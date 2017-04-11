@@ -23,7 +23,7 @@ gulp.task('rev:css', () => {
 });
 
 gulp.task('rev', () => {
-    return gulp.src([config.revJson, config.src])
+    return gulp.src([config.revJson, config.dest+'/**/*.html'])
     .pipe(revCollector({
       replaceReved: true
     }))

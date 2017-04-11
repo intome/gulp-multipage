@@ -29,3 +29,4 @@ const hot = (num) => {
 };
 
 console.log(hot(5));
+

@@ -18,6 +18,7 @@ gulp.task('build', ['del'], () => {
         console.log('gulp build end!');
     };
   runSequence(
+    ['ejs'],
     ['images'],
     ['scss'],
     ['rev:css'],

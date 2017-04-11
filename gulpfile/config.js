@@ -10,6 +10,10 @@ const src = './src';
 const dest = './dist';
 
 module.exports = {
+  html: {
+    src: src+'/views',
+    dest: dest+'/template'
+  },
   scss: {
     src: src+'/sass/*.scss',
     all: src+'/sass/**/*.scss',
@@ -38,8 +42,7 @@ module.exports = {
   },
   rev: {
     revJson: dest+'/rev/**/*.json',
-    all: src+'/template/**/*.html',
-    src: src+'/template/*.html',
+    src: src+'/views/',
     dest: dest+'/template'
   },
   del: {
