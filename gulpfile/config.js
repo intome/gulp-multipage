@@ -11,6 +11,7 @@ const dest = './dist';
 
 module.exports = {
   html: {
+    all: src+'/views/**/*.html',
     src: src+'/views',
     dest: dest+'/template'
   },

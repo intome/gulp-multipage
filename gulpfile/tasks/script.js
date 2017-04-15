@@ -13,6 +13,7 @@ const notify = require('gulp-notify');
 const sourcemaps = require('gulp-sourcemaps');
 const config = require('../config').script;
 const concat = require('gulp-concat');
+const browserSync = require('./broswersync').browserSync;
 
 /* 开发环境 */
 gulp.task('script:dev', () => {
@@ -21,10 +22,10 @@ gulp.task('script:dev', () => {
       'title':'script Error',
       'message':'Error: <%= error.message %>'
   })}))
-  .pipe(sourcemaps.init())
   .pipe(babel({
     presets: ['es2015']
   }))
+  .pipe(sourcemaps.init())
   .pipe(concat('bundle.js'))
   .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest(config.dest))

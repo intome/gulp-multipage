@@ -8,10 +8,16 @@
 
 const gulp = require('gulp');
 const runSequence = require('run-sequence');
+const minimist = require('minimist');
+const knownOptions = {
+    string: 'env',
+    default: {env: process.env.NODE_ENV || 'production'}
+};
+global.options = minimist(process.argv.slice(2), knownOptions);
 
 /* 开发环境 */
 gulp.task('dev', ['del'], () => {
-    runSequence('ejs','images:dev','scss:dev','script:dev');
+    runSequence('browser-sync','ejs','images:dev','scss:dev','script:dev','watch');
 });
 
 /* 生产环境 */
@@ -19,14 +25,5 @@ gulp.task('build', ['del'], () => {
     var end = function(){
         console.log('gulp build end!');
     };
-  runSequence(
-    ['ejs'],
-    ['images'],
-    ['scss'],
-    ['rev:css'],
-    ['script'],
-    ['css'],
-    ['rev'],
-    end
-  );
+  runSequence('ejs','images','scss', 'rev:css', 'script', 'css', 'rev', end);
 });

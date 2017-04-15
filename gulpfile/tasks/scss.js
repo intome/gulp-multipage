@@ -12,6 +12,7 @@ const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
 const autoprefixer = require('gulp-autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
+const browserSync = require('./broswersync').browserSync;
 const config = require('../config').scss;
 
 /* 开发环境编译 */
