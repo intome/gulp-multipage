@@ -27,7 +27,7 @@ gulp.task('script:dev', () => {
   }))
   .pipe(concat('bundle.js'))
   .pipe(sourcemaps.write('.'))
-  .pipe(gulp.dest(config.srcDev))
+  .pipe(gulp.dest(config.dest))
 });
 
 /* 生产环境 */

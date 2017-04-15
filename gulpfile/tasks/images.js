@@ -15,7 +15,11 @@ const rev = require('gulp-rev');
 const pngquant = require('imagemin-pngquant');
 const config = require('../config').images;
 
-/* 生产环境图片压缩 */
+gulp.task('images:dev', () => {
+    return gulp.src(config.src)
+    .pipe(gulp.dest(config.dest));
+});
+
 gulp.task('images', () => {
     return gulp.src(config.src)
     .pipe(plumber({

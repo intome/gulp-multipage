@@ -28,7 +28,7 @@ gulp.task('scss:dev', () => {
     cascade: true
   }))
   .pipe(sourcemaps.write('./'))
-  .pipe(gulp.dest(config.maps));
+  .pipe(gulp.dest(config.dest));
 });
 
 /* 生成环境编译 */

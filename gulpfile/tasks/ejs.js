@@ -8,6 +8,7 @@ const ejs = require('gulp-ejs');
 const include = require('gulp-file-include');
 const config = require('../config').html;
 
+
 gulp.task('ejs', function() {
     return gulp.src(config.src+'/**/*.html')
     .pipe(ejs())

@@ -1,6 +1,7 @@
 body {
-  background-color: #fff;
-  font-family: Arial,"microsoft yahei"; }
+  backgorund-color: #fff;
+  font-family: Arial,"microsoft yahei";
+  text-align: center; }
 
 .box {
   display: -webkit-box;
@@ -15,3 +16,12 @@ body {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center; }
+
+.css3 {
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  background: url(../img/css.jpg) center no-repeat;
+  background-size: cover; }
+
+/*# sourceMappingURL=index.css.map */

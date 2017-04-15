@@ -10,7 +10,9 @@ const gulp = require('gulp');
 const runSequence = require('run-sequence');
 
 /* 开发环境 */
-gulp.task('dev', ['script:dev']);
+gulp.task('dev', ['del'], () => {
+    runSequence('ejs','images:dev','scss:dev','script:dev');
+});
 
 /* 生产环境 */
 gulp.task('build', ['del'], () => {

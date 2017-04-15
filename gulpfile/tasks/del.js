@@ -11,5 +11,5 @@ const del = require('del');
 const config = require('../config').del;
 
 gulp.task('del', () => {
-  del([config.dest+'/*','!'+config.dest+'/rev']);
+  return del([config.dest+'/*','!'+config.dest+'/rev']);
 });
