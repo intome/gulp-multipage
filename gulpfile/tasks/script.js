@@ -13,11 +13,17 @@ const notify = require('gulp-notify');
 const sourcemaps = require('gulp-sourcemaps');
 const config = require('../config').script;
 const concat = require('gulp-concat');
+const gulpIf = require('gulp-if');
 const browserSync = require('./broswersync').browserSync;
+const rev = require('gulp-rev');
+const rename = require('gulp-rename');
+const uglify = require('gulp-uglify');
+const eslint = require('gulp-eslint');
 
-/* 开发环境 */
-gulp.task('script:dev', () => {
+gulp.task('script', () => {
   return gulp.src([config.src,+'!'+config.lib])
+  .pipe(eslint({configFile: "./.eslintrc"}))
+  .pipe(eslint.format())
   .pipe(plumber({'errorHandler':notify.onError({
       'title':'script Error',
       'message':'Error: <%= error.message %>'
@@ -25,27 +31,14 @@ gulp.task('script:dev', () => {
   .pipe(babel({
     presets: ['es2015']
   }))
-  .pipe(sourcemaps.init())
+  .pipe(gulpIf(options.env === 'development', sourcemaps.init()))
   .pipe(concat('bundle.js'))
-  .pipe(sourcemaps.write('.'))
+  .pipe(gulpIf(options.env === 'production', uglify()))
+  .pipe(gulpIf(options.env === 'production', rev()))
+  .pipe(gulpIf(options.env === 'development', sourcemaps.write('.')))
   .pipe(gulp.dest(config.dest))
-});
-
-/* 生产环境 */
-const rev = require('gulp-rev');
-const rename = require('gulp-rename');
-const uglify = require('gulp-uglify');
-
-gulp.task('script', () => {
-  return gulp.src([config.src,+'!'+config.lib])
-  .pipe(babel({
-    presets: ['es2015']
-  }))
-  .pipe(concat('bundle.js'))
-  .pipe(uglify())
-  .pipe(rev())
-  .pipe(gulp.dest(config.dest))
-  .pipe(rev.manifest())
-  .pipe(gulp.dest(config.rev))
-  .pipe(notify({message: 'script build success!'}));
+  .pipe(gulpIf(options.env === 'development', browserSync.reload({stream: true})))
+  .pipe(gulpIf(options.env === 'production', rev.manifest()))
+  .pipe(gulpIf(options.env === 'production', gulp.dest(config.rev)))
+  .pipe(gulpIf(options.env === 'production', notify({message: 'script build success!'})));
 });

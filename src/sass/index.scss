@@ -1,20 +1,42 @@
 @charset "UTF-8";
 
 body {
-  backgorund-color:#fff;
-  font-family:Arial,"microsoft yahei";
+  background-color: #fff;
+  font-family: Arial, "microsoft yahei", serif;
   text-align:center;
 }
 .box {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: pink;
 }
 .css3 {
   $w: 500px;
   width: $w;
   height: $w;
   margin:0 auto;
-  background:url(../img/css.jpg) center no-repeat;
+  background:url("../img/css.jpg?rev=@@hash") center no-repeat pink;
   background-size: cover;
+}
+.icon {
+  $w: 48px;
+  $h: $w;
+  width: $w;
+  height: $h;
+}
+.huoche {
+  background: url("../img/huoche.png") no-repeat;
+}
+.xueshang {
+  background: url("../img/xueshang.png") no-repeat;
+}
+.huanghun {
+    // 排除被精灵的
+    /* @meta {"spritesheet": {"include": false}} */
+  background: url("../img/huanghun.png") no-repeat;
+}
+.yewan {
+    width:32px; height:32px;
+    background: url("../img/yewan.png") no-repeat;
 }

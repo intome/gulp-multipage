@@ -37,7 +37,7 @@ module.exports = {
     rev: dest+'/rev/js'
   },
   images: {
-    src: src+'/img/**/*',
+    src: src+'/img',
     dest: dest+'/img',
     rev: dest+'/rev/img'
   },

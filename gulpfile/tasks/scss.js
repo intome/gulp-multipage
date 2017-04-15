@@ -14,37 +14,26 @@ const autoprefixer = require('gulp-autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 const browserSync = require('./broswersync').browserSync;
 const config = require('../config').scss;
+const gulpIf = require('gulp-if');
+const rev = require('gulp-rev');
 
-/* 开发环境编译 */
-gulp.task('scss:dev', () => {
+gulp.task('scss', () => {
   return gulp.src(config.all)
   .pipe(plumber({'errorHandler':notify.onError({
       'title':'SCSS Error',
       'message':'Error: <%= error.message %>'
   })}))
-  .pipe(sourcemaps.init())
+  .pipe(gulpIf(options.env === 'development', sourcemaps.init()))
   .pipe(sass())
   .pipe(autoprefixer({
     browsers: ['last 2 version','Chrome >= 30', 'last 3 Safari versions', 'IE >= 9', 'IOS >= 7', 'Android >= 4'],
     cascade: true
   }))
-  .pipe(sourcemaps.write('./'))
-  .pipe(gulp.dest(config.dest));
-});
-
-/* 生成环境编译 */
-const rev = require('gulp-rev');
-const cssConfig = require('../config').css;
-gulp.task('scss', () => {
-  return gulp.src(config.all)
-  .pipe(sass())
-  .pipe(autoprefixer({
-    browsers: ['last 2 version','Chrome >= 30', 'last 3 Safari versions', 'IE >= 9', 'IOS >= 7', 'Android >= 4'],
-    cascade: true
-  }))
-  .pipe(rev())
+  .pipe(gulpIf(options.env === 'production', rev()))
+  .pipe(gulpIf(options.env === 'development', sourcemaps.write('./')))
   .pipe(gulp.dest(config.dest))
-  .pipe(rev.manifest())
-  .pipe(gulp.dest(config.rev))
-  .pipe(notify({message: 'scss build success!'}));
+  .pipe(gulpIf(options.env === 'production', rev.manifest()))
+  .pipe(gulpIf(options.env === 'production', gulp.dest(config.rev)))
+  .pipe(gulpIf(options.env === 'production', notify({message: 'scss build success!'})))
+  .pipe(gulpIf(options.env === 'development', browserSync.reload({stream: true})));
 });

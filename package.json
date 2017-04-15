@@ -4,7 +4,8 @@
   "description": "Multi page scaffold",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "gulp dev --env development",
+    "build": "gulp build --env production"
   },
   "author": "Tomi|lintaoming@qq.com",
   "license": "MIT",
@@ -12,15 +13,20 @@
     "babel-core": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "browser-sync": "^2.18.8",
+    "changed": "^0.0.2",
     "del": "^2.2.2",
+    "eslint": "^3.19.0",
     "gulp": "^3.9.1",
     "gulp-asset-rev": "^0.0.15",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-babel": "^6.1.2",
     "gulp-cache": "^0.4.6",
+    "gulp-changed": "^2.0.0",
     "gulp-clean-css": "^3.0.4",
     "gulp-concat": "^2.6.1",
+    "gulp-css-spriter": "^0.4.0",
     "gulp-ejs": "^3.0.1",
+    "gulp-eslint": "^3.0.1",
     "gulp-file-include": "^1.1.0",
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^3.2.0",
@@ -33,7 +39,6 @@
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.5.1",
     "gulp-uglify": "^2.1.2",
-    "imagemin-pngquant": "^5.0.0",
     "minimist": "^1.2.0",
     "require-dir": "^0.3.1",
     "run-sequence": "^1.2.2"

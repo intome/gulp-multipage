@@ -17,13 +17,13 @@ global.options = minimist(process.argv.slice(2), knownOptions);
 
 /* 开发环境 */
 gulp.task('dev', ['del'], () => {
-    runSequence('browser-sync','ejs','images:dev','scss:dev','script:dev','watch');
+    runSequence('browser-sync', 'ejs', 'scss', 'images', 'script','watch');
 });
 
 /* 生产环境 */
 gulp.task('build', ['del'], () => {
-    var end = function(){
+    let end = function(){
         console.log('gulp build end!');
     };
-  runSequence('ejs','images','scss', 'rev:css', 'script', 'css', 'rev', end);
+  runSequence('ejs','scss', 'images', 'rev:css', 'css','script', 'rev', end);
 });

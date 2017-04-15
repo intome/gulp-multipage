@@ -9,24 +9,29 @@
 document.body.append('Hello HTML5');
 
 class Preson {
-  constructor () {
-    this.name = 'Tomi';
-    this.age = '18';
-  }
-  showName () {
-    console.log(this.name);
-  }
-  showAge () {
-    console.log(this.age);
-  }
+    constructor () {
+        this.name = 'Tomi';
+        this.age = '18';
+    }
+
+    showName () {
+        console.log(this.name);
+    }
+
+    showAge () {
+        console.log(this.age);
+    }
 }
 
 const P = new Preson();
 P.showAge();
 
 const hot = (num) => {
-  return num + 10;
+    let i = 10;
+    return num + i;
 };
-
-console.log(hot(5));
+var num = 5;
+console.log(hot(num));
+var num2 = 3;
+console.log(hot(num2));
 

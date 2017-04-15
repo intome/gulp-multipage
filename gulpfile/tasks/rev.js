@@ -9,6 +9,7 @@
 const gulp = require('gulp');
 const rev = require('gulp-rev');
 const revCollector= require("gulp-rev-collector");
+const revAppend = require('gulp-rev-append');
 const notify = require('gulp-notify');
 const config = require('../config').rev;
 const configCss = require('../config').css;
@@ -18,6 +19,7 @@ gulp.task('rev:css', () => {
     .pipe(revCollector({
         replaceReved: true
     }))
+    .pipe(revAppend())
     .pipe(gulp.dest(configCss.dest))
     .pipe(notify({message: 'revCss build success!'}));
 });
@@ -27,6 +29,7 @@ gulp.task('rev', () => {
     .pipe(revCollector({
       replaceReved: true
     }))
+    .pipe(revAppend())
     .pipe(gulp.dest(config.dest))
     .pipe(notify({message: 'rev build success!'}));
 });

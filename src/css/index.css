@@ -1,7 +1,7 @@
 body {
-  backgorund-color: #fff;
-  font-family: Arial,"microsoft yahei";
-  text-align: center; }
+    backgorund-color: red;
+    font-family: Arial, "microsoft yahei", serif;
+    text-align: center; }
 
 .box {
   display: -webkit-box;
