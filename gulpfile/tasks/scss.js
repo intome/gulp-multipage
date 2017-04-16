@@ -14,11 +14,12 @@ const autoprefixer = require('gulp-autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 const browserSync = require('./broswersync').browserSync;
 const config = require('../config').scss;
+const configImg = require('../config').images;
 const gulpIf = require('gulp-if');
 const rev = require('gulp-rev');
 
 gulp.task('scss', () => {
-  return gulp.src(config.all)
+  return gulp.src([config.all])
   .pipe(plumber({'errorHandler':notify.onError({
       'title':'SCSS Error',
       'message':'Error: <%= error.message %>'

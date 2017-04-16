@@ -17,7 +17,7 @@ global.options = minimist(process.argv.slice(2), knownOptions);
 
 /* 开发环境 */
 gulp.task('dev', ['del'], () => {
-    runSequence('browser-sync', 'ejs', 'scss', 'images', 'script','watch');
+    runSequence('browser-sync', 'ejs', 'sprite', 'scss', 'images', 'script','watch');
 });
 
 /* 生产环境 */
@@ -25,5 +25,5 @@ gulp.task('build', ['del'], () => {
     let end = function(){
         console.log('gulp build end!');
     };
-  runSequence('ejs','scss', 'images', 'rev:css', 'css','script', 'rev', end);
+  runSequence('ejs', 'sprite', 'scss', 'images', 'rev:css', 'css','script', 'rev', end);
 });

@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+@import "sprite";
+
 body {
   background-color: #fff;
   font-family: Arial, "microsoft yahei", serif;
@@ -26,17 +28,14 @@ body {
   height: $h;
 }
 .huoche {
-  background: url("../img/huoche.png") no-repeat;
+  @include sprite($huoche);
 }
 .xueshang {
-  background: url("../img/xueshang.png") no-repeat;
+  @include sprite($xueshang);
 }
 .huanghun {
-    // 排除被精灵的
-    /* @meta {"spritesheet": {"include": false}} */
-  background: url("../img/huanghun.png") no-repeat;
+  @include sprite($huanghun);
 }
 .yewan {
-    width:32px; height:32px;
-    background: url("../img/yewan.png") no-repeat;
+  @include sprite($yewan);
 }

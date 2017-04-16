@@ -16,7 +16,7 @@ const gulpIf = require('gulp-if');
 const config = require('../config').images;
 
 gulp.task('images', () => {
-    return gulp.src(config.src+'/**/*')
+    return gulp.src([config.src+'/**/*', '!'+config.sprite+'/**/*'])
     .pipe(plumber({
         errorHandler: notify.onError('Error: <%= error.message %>')
     }))

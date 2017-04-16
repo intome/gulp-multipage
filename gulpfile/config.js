@@ -16,7 +16,7 @@ module.exports = {
     dest: dest+'/template'
   },
   scss: {
-    src: src+'/sass/*.scss',
+    src: src+'/sass',
     all: src+'/sass/**/*.scss',
     dest: dest+'/css',
     rev: dest+'/rev/css',
@@ -39,6 +39,7 @@ module.exports = {
   images: {
     src: src+'/img',
     dest: dest+'/img',
+    sprite: src+'/img/sprite',
     rev: dest+'/rev/img'
   },
   rev: {

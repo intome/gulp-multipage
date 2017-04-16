@@ -8,9 +8,11 @@ const browserSync = require('browser-sync').create();
 
 gulp.task('browser-sync', () => {
     browserSync.init({
-        'server': {
-            baseDir: './dist'
-        }
+        server: {
+            baseDir: './dist',
+        },
+        scrollProportionally: false,
+        startPath: '/template/'
     });
 });
 

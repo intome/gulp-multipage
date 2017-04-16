@@ -8,6 +8,7 @@ const ejs = require('gulp-ejs');
 const include = require('gulp-file-include');
 const gulpIf = require('gulp-if');
 const chnaged = require('gulp-changed');
+const notify = require('gulp-notify');
 const config = require('../config').html;
 const browserSync = require('./broswersync').browserSync;
 
@@ -16,5 +17,6 @@ gulp.task('ejs', function() {
     .pipe(chnaged(config.dest))
     .pipe(ejs())
     .pipe(gulpIf(options.env === 'development',browserSync.reload({stream:true})))
-    .pipe(gulp.dest(config.dest));
+    .pipe(gulp.dest(config.dest))
+    .pipe(gulpIf(options.env === 'production', notify({message: 'ejs build success!'})));
 });
